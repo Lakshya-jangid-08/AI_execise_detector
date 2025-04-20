@@ -1,8 +1,5 @@
-// utils/squatRules.js
 export function checkSquatForm(landmarks) {
     const issues = [];
-    
-    // Get relevant landmarks
     const leftHip = landmarks[23];
     const rightHip = landmarks[24];
     const leftKnee = landmarks[25];
@@ -11,8 +8,6 @@ export function checkSquatForm(landmarks) {
     const rightAnkle = landmarks[28];
     const leftShoulder = landmarks[11];
     const rightShoulder = landmarks[12];
-    
-    // Check back angle
     const backAngle = calculateAngle(leftShoulder, leftHip, leftKnee);
     if (backAngle < 160) {
       issues.push({
@@ -21,8 +16,6 @@ export function checkSquatForm(landmarks) {
         severity: "high"
       });
     }
-    
-    // Check knee alignment
     const kneeAlignment = checkKneeOverToes(leftKnee, leftAnkle);
     if (kneeAlignment > 30) {
       issues.push({
@@ -31,6 +24,5 @@ export function checkSquatForm(landmarks) {
         severity: "medium"
       });
     }
-    
     return issues;
   }
